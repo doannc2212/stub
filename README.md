@@ -18,7 +18,7 @@ docker compose up -d
 ```
 Then,
 ```
-open http://localhost:3000
+Stub is up on http://localhost:3000
 ```
 
 ## How to use?
