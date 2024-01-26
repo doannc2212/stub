@@ -3,3 +3,4 @@ bun.lockb
 .obsidian
 .vscode
 .idea
+.env

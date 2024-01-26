@@ -1,3 +1,4 @@
+# Stub API
 An application for create custom response.
 
 ## Installation
@@ -11,7 +12,7 @@ cd stub
 bun install
 bun run dev
 ```
-2. Docker (todo)
+2. Run with Docker
 ```
 docker compose up -d
 ```
