@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^3.12.7",
+    "redis": "^4.6.12"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0"
+  }
+}
