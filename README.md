@@ -52,6 +52,7 @@ Cookie: userId=john
 
 3. Retrieve mock data <br>
 Send request to `baseUrl/api/` + `path` which you create before
+<br>
 *Request*:
 ```js
 GET baseUrl/api/sample
