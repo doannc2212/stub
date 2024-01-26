@@ -25,7 +25,7 @@ Note that you must attack cookie `userId=${value}` for api to know which user ne
 
 1. Create a new mock response
 Send a request to stub endpoint
-```json
+```js
 POST baseUrl/create
 Cookie: userId=john
 {
@@ -44,7 +44,7 @@ Cookie: userId=john
 ```
 
 2. Clear mock response
-```json
+```js
 POST baseUrl/clear
 Cookie: userId=john
 ```
@@ -52,12 +52,12 @@ Cookie: userId=john
 3. Retrieve mock data
 Send request to `baseUrl/api/` + `path` which you create before
 *Request*:
-```JSON
+```js
 GET baseUrl/api/sample
 Cookie: userId=john
 ```
 Response:
-```JSON
+```js
 {
 	"id": 1,
 	"name": "John Doe"
