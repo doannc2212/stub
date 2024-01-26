@@ -24,7 +24,7 @@ Stub is up on http://localhost:3000
 ## How to use?
 Note that you must attack cookie `userId=${value}` for api to know which user need mock response
 
-1. Create a new mock response
+1. Create a new mock response <br>
 Send a request to stub endpoint
 ```js
 POST baseUrl/create
@@ -50,7 +50,7 @@ POST baseUrl/clear
 Cookie: userId=john
 ```
 
-3. Retrieve mock data
+3. Retrieve mock data <br>
 Send request to `baseUrl/api/` + `path` which you create before
 *Request*:
 ```js
