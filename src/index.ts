@@ -1,5 +1,4 @@
-import { Hono } from "hono";
-import { getCookie } from "hono/cookie";
+import { Elysia } from "elysia";
 import { createClient } from "redis";
 
 const client = createClient({
@@ -15,7 +14,7 @@ type TModel = {
   status: number;
 };
 
-const app = new Hono();
+const app = new Elysia();
 
 const create = (userId: string, value: TModel) => {
   client.set(
@@ -41,33 +40,32 @@ const get = (
   return client.get(`${userId}:${method}:${path}`);
 };
 
-app.post("/create", async (c) => {
-  const userIdCookie = getCookie(c, "userId");
-  if (!userIdCookie) return c.json({});
-  const data = await c.req.json<TModel>();
-  create(userIdCookie, data);
-  return c.json({
-    user: userIdCookie,
+app.post("/create", async ({ body, cookie }) => {
+  const userId = cookie.userId.get();
+  if (!userId) return "No userId";
+  const data = body as TModel;
+  create(userId, data);
+  return {
+    user: userId,
     ...data,
-  });
+  };
 });
 
-app.post("/clear", (c) => {
-  const userIdCookie = getCookie(c, "userId");
-  if (!userIdCookie) return c.json({});
-  clear(userIdCookie);
-  return c.json({ cookie: userIdCookie });
+app.post("/clear", ({ cookie }) => {
+  const userId = cookie.userId.get();
+  if (!userId) return "No userId";
+  clear(userId);
+  return { cookie: userId };
 });
 
-app.all("/api/*", async (c) => {
-  const userIdCookie = getCookie(c, "userId");
-  if (!userIdCookie) return c.json({});
-  const path = c.req.path.replace("/api", "");
-  const redisData = await get(userIdCookie, c.req.method, path);
-  if (!redisData) return c.json({});
+app.all("/api/*", async ({ cookie, path, request: { method }, set }) => {
+  const userId = cookie.userId.get();
+  if (!userId) return "No userId";
+  const redisData = await get(userId, method, path.replace("/api", ""));
+  if (!redisData) return {};
   const { status, data } = JSON.parse(redisData);
-  c.status = status;
-  return c.json(data);
+  set.status = status;
+  return data;
 });
 
-export default app;
+app.listen(3000);
