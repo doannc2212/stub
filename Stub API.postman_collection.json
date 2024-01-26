@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "877218d6-205c-4293-90e4-6f8b703e65aa",
+		"name": "Stub API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24753528"
+	},
+	"item": [
+		{
+			"name": "Clear all mocked data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/clear",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"clear"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clear",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clear"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 10:02:15 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "17"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"cookie\": \"doan\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Example request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/sample",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"sample"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "No data response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/sample",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"sample"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 10:02:42 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						}
+					],
+					"cookie": [],
+					"body": "{}"
+				},
+				{
+					"name": "Successful response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/sample",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"sample"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 10:03:21 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "17"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"hello\": \"world\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create mock data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    // request method\n    \"method\": \"GET\",\n    // requset path, which place right after baseUrl/api/\n    \"path\": \"/sample\", \n    // response body\n    \"data\": {\n        \"hello\": \"world\"\n    },\n    // response status\n    \"status\": 200\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // request method\n    \"method\": \"GET\",\n    // requset path, which place right after baseUrl/api/\n    \"path\": \"/sample\", \n    // response body\n    \"data\": {\n        \"hello\": \"world\"\n    },\n    // response status\n    \"status\": 200\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 26 Jan 2024 10:01:45 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "85"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": \"doan\",\n    \"method\": \"GET\",\n    \"path\": \"/sample\",\n    \"data\": {\n        \"hello\": \"world\"\n    },\n    \"status\": 200\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "someone",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
