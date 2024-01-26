@@ -22,7 +22,7 @@ Stub is up on http://localhost:3000
 ```
 
 ## How to use?
-Note that you must attack cookie `userId=${value}` for api to know which user need mock response
+You need to attach cookie `userId=${value}` when request for api to know which user need data
 
 1. Create a new mock response <br>
 Send a request to stub endpoint
