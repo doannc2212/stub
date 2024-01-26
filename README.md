@@ -1,10 +1,5 @@
 # Stub API
-An application for create custom response.
-Branch
-
-main => hono redis
-
-elysia => elysia redis
+An application for create custom response. Build with Hono and redis. Checkout elysia for elysia stuff
 
 ## Installation
 Firstly, clone this repository
