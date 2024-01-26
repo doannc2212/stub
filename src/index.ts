@@ -42,28 +42,28 @@ const get = (
 };
 
 app.post("/create", async (c) => {
-  const userIdCookie = getCookie(c, "userId");
-  if (!userIdCookie) return c.json({});
+  const userId = getCookie(c, "userId");
+  if (!userId) return c.text("No userId");
   const data = await c.req.json<TModel>();
-  create(userIdCookie, data);
+  create(userId, data);
   return c.json({
-    user: userIdCookie,
+    user: userId,
     ...data,
   });
 });
 
 app.post("/clear", (c) => {
-  const userIdCookie = getCookie(c, "userId");
-  if (!userIdCookie) return c.json({});
-  clear(userIdCookie);
-  return c.json({ cookie: userIdCookie });
+  const userId = getCookie(c, "userId");
+  if (!userId) return c.text("No userId");
+  clear(userId);
+  return c.json({ cookie: userId });
 });
 
 app.all("/api/*", async (c) => {
-  const userIdCookie = getCookie(c, "userId");
-  if (!userIdCookie) return c.json({});
+  const userId = getCookie(c, "userId");
+  if (!userId) return c.text("No userId");
   const path = c.req.path.replace("/api", "");
-  const redisData = await get(userIdCookie, c.req.method, path);
+  const redisData = await get(userId, c.req.method, path);
   if (!redisData) return c.json({});
   const { status, data } = JSON.parse(redisData);
   c.status = status;
