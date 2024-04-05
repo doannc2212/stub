@@ -1,5 +1,6 @@
 # Stub API
-An application for create custom response.
+An application for create placeholder implementation of API responses which used as temporary substitute for the actual API.
+Build with Elysia and redis.
 
 ## Installation
 Firstly, clone this repository
