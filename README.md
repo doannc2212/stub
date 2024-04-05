@@ -1,5 +1,6 @@
 # Stub API
-An application for create custom response. Build with Hono and redis. Checkout elysia for elysia stuff
+An application for create placeholder implementation of API responses which used as temporary substitute for the actual API.
+Build with Hono and redis. Checkout elysia for elysia stuff
 
 ## Installation
 Firstly, clone this repository
