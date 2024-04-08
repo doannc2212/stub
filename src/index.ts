@@ -19,7 +19,7 @@ const app = new Elysia();
 const create = (userId: string, value: TModel) => {
   client.set(
     `${userId}:${value.method}:${value.path}`,
-    JSON.stringify({ status: value.status, data: value.data }),
+    JSON.stringify({ status: value.status, data: value.data })
   );
 };
 
@@ -35,13 +35,13 @@ const clear = async (userId: string) => {
 const get = (
   userId: string,
   method: string,
-  path: string,
+  path: string
 ): ReturnType<typeof client.get> => {
   return client.get(`${userId}:${method}:${path}`);
 };
 
 app.post("/create", async ({ body, cookie }) => {
-  const userId = cookie.userId.get();
+  const userId = cookie.userId.value;
   if (!userId) return "No userId";
   const data = body as TModel;
   create(userId, data);
@@ -52,14 +52,14 @@ app.post("/create", async ({ body, cookie }) => {
 });
 
 app.post("/clear", ({ cookie }) => {
-  const userId = cookie.userId.get();
+  const userId = cookie.userId.value;
   if (!userId) return "No userId";
   clear(userId);
   return { cookie: userId };
 });
 
 app.all("/api/*", async ({ cookie, path, request: { method }, set }) => {
-  const userId = cookie.userId.get();
+  const userId = cookie.userId.value;
   if (!userId) return "No userId";
   const redisData = await get(userId, method, path.replace("/api", ""));
   if (!redisData) return {};
