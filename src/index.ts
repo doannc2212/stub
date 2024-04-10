@@ -68,7 +68,7 @@ app.all("/api/*", async ({ cookie, path, request: { method }, set }) => {
   return data;
 });
 
-const PORT = Bun.env.PORT || 3000;
+const PORT = Bun.env.PORT || 8000;
 app.listen(PORT);
 
 export default app;
