@@ -19,7 +19,7 @@ docker compose up -d
 ```
 Then,
 ```
-Stub is up on http://localhost:3000
+Stub is up on http://localhost:8000
 ```
 
 ## How to use?
