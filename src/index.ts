@@ -20,7 +20,7 @@ const app = new Hono();
 const create = (userId: string, value: TModel) => {
   client.set(
     `${userId}:${value.method}:${value.path}`,
-    JSON.stringify({ status: value.status, data: value.data }),
+    JSON.stringify({ status: value.status, data: value.data })
   );
 };
 
@@ -36,7 +36,7 @@ const clear = async (userId: string) => {
 const get = (
   userId: string,
   method: string,
-  path: string,
+  path: string
 ): ReturnType<typeof client.get> => {
   return client.get(`${userId}:${method}:${path}`);
 };
@@ -70,4 +70,9 @@ app.all("/api/*", async (c) => {
   return c.json(data);
 });
 
-export default app;
+const PORT = process.env.PORT || 8000;
+
+export default {
+  port: PORT,
+  fetch: app.fetch,
+};
