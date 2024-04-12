@@ -67,7 +67,7 @@ app.all("/api/*", async (c) => {
   if (!redisData) return c.json({});
   const { status, data } = JSON.parse(redisData);
   c.status = status;
-  return c.json(data);
+  return c.json(data, status);
 });
 
 const PORT = process.env.PORT || 8000;
