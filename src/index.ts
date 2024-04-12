@@ -66,7 +66,6 @@ app.all("/api/*", async (c) => {
   const redisData = await get(userId, c.req.method, path);
   if (!redisData) return c.json({});
   const { status, data } = JSON.parse(redisData);
-  c.status = status;
   return c.json(data, status);
 });
 
