@@ -43,6 +43,7 @@ const get = (
 app.post("/create", async ({ body, cookie }) => {
   const userId = cookie.userId.value;
   if (!userId) return "No userId";
+  if (!(body instanceof Object)) return "Error";
   const data = body as TModel;
   create(userId, data);
   return {
