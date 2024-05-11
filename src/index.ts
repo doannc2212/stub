@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import { getCookie } from "hono/cookie";
 import { createClient } from "redis";
 
@@ -16,11 +17,18 @@ type TModel = {
 };
 
 const app = new Hono();
+app.use(
+  "*",
+  cors({
+    origin: "*",
+    credentials: true,
+  }),
+);
 
 const create = (userId: string, value: TModel) => {
   client.set(
     `${userId}:${value.method}:${value.path}`,
-    JSON.stringify({ status: value.status, data: value.data })
+    JSON.stringify({ status: value.status, data: value.data }),
   );
 };
 
@@ -36,7 +44,7 @@ const clear = async (userId: string) => {
 const get = (
   userId: string,
   method: string,
-  path: string
+  path: string,
 ): ReturnType<typeof client.get> => {
   return client.get(`${userId}:${method}:${path}`);
 };
