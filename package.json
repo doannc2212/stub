@@ -5,6 +5,7 @@
     "start": "NODE_ENV=production bun src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
     "elysia": "^1.0.13",
     "redis": "^4.6.13"
   },

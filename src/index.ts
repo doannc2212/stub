@@ -1,3 +1,4 @@
+import cors from "@elysiajs/cors";
 import { Elysia } from "elysia";
 import { createClient } from "redis";
 
@@ -19,7 +20,7 @@ const app = new Elysia();
 const create = (userId: string, value: TModel) => {
   client.set(
     `${userId}:${value.method}:${value.path}`,
-    JSON.stringify({ status: value.status, data: value.data })
+    JSON.stringify({ status: value.status, data: value.data }),
   );
 };
 
@@ -35,7 +36,7 @@ const clear = async (userId: string) => {
 const get = (
   userId: string,
   method: string,
-  path: string
+  path: string,
 ): ReturnType<typeof client.get> => {
   return client.get(`${userId}:${method}:${path}`);
 };
@@ -70,6 +71,6 @@ app.all("/api/*", async ({ cookie, path, request: { method }, set }) => {
 });
 
 const PORT = Bun.env.PORT || 8000;
-app.listen(PORT);
+app.use(cors()).listen(PORT);
 
 export default app;
