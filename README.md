@@ -69,7 +69,7 @@ Response:
 
 ## FAQ
 
-# Stub api is not work after apply to my web application?
+### Stub api is not work after apply to my web application?
 
 The stub API relies on cookies. To resolve this, follow these steps:
 
