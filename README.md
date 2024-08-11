@@ -66,3 +66,14 @@ Response:
 	"name": "John Doe"
 }
 ```
+
+## FAQ
+
+# Stub api is not work after apply to my web application?
+
+The stub API relies on cookies. To resolve this, follow these steps:
+
+1. Open Chrome DevTools.
+2. Navigate to the "Application" tab.
+3. Locate the cookies associated with your stub API endpoint.
+4. Set the "Same-Site" attribute of that cookies to "None".
